@@ -80,6 +80,30 @@ export const createItems = async () => {
   const client = initConnection();
   client.connect();
 
+  await client.query(`
+    insert into users(name) values ('Bohdan');
+  `);
+  
+  await client.query(`
+    insert into authors(name) values ('Onatskyi');
+  `);
+  
+  await client.query(`
+    insert into categories(name) values ('Vegetables');
+  `);
+  
+  await client.query(`
+    insert into books(name, userid, authorid, categoryid) values ('React cookbook', 1, 1, 1);
+  `);
+  
+  await client.query(`
+    insert into descriptions(description, bookid) values ('This is book about unicron and react', 1);
+  `);
+  
+  await client.query(`
+    insert into reviews(message, userid, bookid) values ('I hate this book', 1, 1);
+  `);
+  
   client.end();
 };
 
